@@ -32,6 +32,18 @@
   function mmss(s) { return pad(Math.floor(s / 60)) + ':' + pad(s % 60); }
   function words(s) { var m = String(s).trim().match(/[A-Za-z0-9’'\-]+/g); return m ? m.length : 0; }
   function fix(s) { return String(s).replace(/'/g, '’'); }
+  /* text with simple <em>…</em> / <b>…</b> marks -> DOM nodes (no raw tags on screen) */
+  function rich(s) {
+    var out = [], re = /<(em|b)>([\s\S]*?)<\/\1>/g, last = 0, m;
+    s = fix(s);
+    while ((m = re.exec(s))) {
+      if (m.index > last) out.push(s.slice(last, m.index));
+      var el = document.createElement(m[1]); el.textContent = m[2]; out.push(el);
+      last = m.index + m[0].length;
+    }
+    if (last < s.length) out.push(s.slice(last));
+    return out;
+  }
 
   /* ---------- store ---------- */
   var KEY = 'c1:' + L.id + ':v1';
@@ -357,7 +369,7 @@
     function tokens(str) {
       var out = [], re = /\{(\d+)\}/g, last = 0, m;
       while ((m = re.exec(str))) {
-        if (m.index > last) out.push(fix(str.slice(last, m.index)));
+        if (m.index > last) out.push(rich(str.slice(last, m.index)));
         var gi = parseInt(m[1], 10) - 1, g = b.gaps[gi], d;
         if (b.mode === 'select') d = selectDef(g.ans, g.opts);
         else if (b.mode === 'bank') d = bankDef(g);
@@ -367,7 +379,7 @@
         out.push(h('span', { class: 'gw' }, showN ? h('span', { class: 'gn' }, '(' + (gi + 1) + ')') : null, d.el, d.mk, d.ansEl, g.hint ? h('span', { class: 'hint' }, g.hint) : null));
         last = m.index + m[0].length;
       }
-      if (last < str.length) out.push(fix(str.slice(last)));
+      if (last < str.length) out.push(rich(str.slice(last)));
       return out;
     }
     var body;
