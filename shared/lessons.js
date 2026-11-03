@@ -8,5 +8,13 @@ window.C1_LESSONS = [
     title: 'Silence Lab',
     blurb: 'A short story set in a Himalayan monastery, a talk about the sound of nothing, a conversation with a monk from Tibet, and discussion and writing tasks.',
     skills: ['Reading', 'Listening', 'Use of English', 'Speaking', 'Writing', 'Vocabulary']
+  },
+  {
+    id: 'unreal',
+    path: 'lessons/unreal/index.html',
+    eyebrow: 'Lesson 02 · Grammar · 2 × 60 min',
+    title: 'Unreal Time Lab',
+    blurb: 'Past tenses for unreal situations: if, imagine, suppose, as if, polite questions, it’s high time, would rather, wish and if only. Five real-life situations and colour-coded rules.',
+    skills: ['Grammar', 'Use of English', 'Speaking', 'Writing']
   }
 ];
