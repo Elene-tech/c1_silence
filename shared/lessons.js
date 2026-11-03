@@ -6,7 +6,7 @@ window.C1_LESSONS = [
     path: 'lessons/silence/index.html',
     eyebrow: 'Lesson 01 · 120 min',
     title: 'Silence Lab',
-    blurb: 'A short story set in a Himalayan monastery, a talk about the sound of nothing, a conversation with a monk from Tibet, and discussion and writing tasks.',
+    blurb: 'A short story set in a Himalayan monastery, a talk about the sound of nothing, a conversation with a monk from Tibet, discussion and writing tasks, and a Practice Lab with 128 extra exam-style exercises.',
     skills: ['Reading', 'Listening', 'Use of English', 'Speaking', 'Writing', 'Vocabulary']
   },
   {

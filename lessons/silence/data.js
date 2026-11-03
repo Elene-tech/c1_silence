@@ -3,7 +3,7 @@ window.LESSON = {
   id: 'silence',
   title: 'Silence Lab',
   eyebrow: 'C1 Advanced · Lesson 01',
-  sub: 'Two hours on silence: a short story, a talk about the sound of nothing, a conversation with a monk from Tibet, and a lot of speaking and writing.',
+  sub: 'Two hours on silence: a short story, a talk about the sound of nothing, a conversation with a monk from Tibet, and a lot of speaking and writing. A separate Practice Lab adds 128 exam-style tasks.',
   media: {
     talk: { src: 'media/talk.mp3' },          // Audio 1, the talk
     dialogue: { src: 'media/dialogue.mp3' }  // Audio 2, the conversation

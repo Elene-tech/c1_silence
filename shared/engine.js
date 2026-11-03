@@ -610,12 +610,12 @@
   };
 
   /* ---------- page assembly ---------- */
-  function buildSteps(container, steps, isHw) {
+  function buildSteps(container, steps, mode) {
     steps.forEach(function (s, si) {
       curStep = s.id;
       var sec = h('section', { class: 'step', id: 's-' + s.id },
         h('div', { class: 'step-h' },
-          h('div', { class: 'time' }, isHw ? 'HW' : pad(s.t[0]) + '–' + pad(s.t[1]), h('small', null, isHw ? 'at home' : 'minutes')),
+          h('div', { class: 'time' }, mode === 'hw' ? 'HW' : mode === 'pr' ? 'P' + (s.n || si + 1) : pad(s.t[0]) + '–' + pad(s.t[1]), h('small', null, mode === 'hw' ? 'at home' : mode === 'pr' ? 'practice' : 'minutes')),
           h('div', null, h('h2', null, s.title), s.goal ? h('p', { class: 'goal' }, s.goal) : null)));
       s.blocks.forEach(function (b) {
         var fn = R[b.t]; if (!fn) { console.error('Unknown block', b.t); return; }
@@ -632,35 +632,39 @@
     $q('#lesson-title').textContent = L.title;
     $q('#lesson-eyebrow').textContent = L.eyebrow;
     $q('#lesson-sub').textContent = L.sub;
-    var main = $q('#main-lesson'), hw = $q('#main-hw');
-    buildSteps(main, L.steps, false);
-    if (L.homework) buildSteps(hw, [L.homework], true);
+    var main = $q('#main-lesson'), hw = $q('#main-hw'), pr = $q('#main-pr') || document.createElement('div');
+    buildSteps(main, L.steps, 'lesson');
+    if (L.homework) buildSteps(hw, [L.homework], 'hw');
+    if (L.practice) buildSteps(pr, L.practice, 'pr');
 
     var steps = $q('#steps');
-    function navFor(list, isHw) {
+    function navFor(list, mode) {
       steps.innerHTML = '';
       list.forEach(function (s) {
         steps.append(h('a', { href: '#s-' + s.id, 'data-step': s.id, 'data-go': 's-' + s.id },
-          h('b', null, isHw ? 'HW' : pad(s.t[0])), s.short || s.title, isHw ? null : h('i', null, (s.t[1] - s.t[0]) + ' min')));
+          h('b', null, mode === 'hw' ? 'HW' : mode === 'pr' ? 'P' + s.n : pad(s.t[0])), s.short || s.title, mode === 'lesson' ? h('i', null, (s.t[1] - s.t[0]) + ' min') : null));
       });
     }
-    var tabLesson = $q('#tab-lesson'), tabHw = $q('#tab-hw');
+    var tabLesson = $q('#tab-lesson'), tabHw = $q('#tab-hw'), tabPr = $q('#tab-pr') || document.createElement('button');
     function showTab(which) {
-      var hwOn = which === 'hw';
-      main.hidden = hwOn; hw.hidden = !hwOn;
-      tabLesson.setAttribute('aria-selected', hwOn ? 'false' : 'true'); tabHw.setAttribute('aria-selected', hwOn ? 'true' : 'false');
-      navFor(hwOn ? [L.homework] : L.steps, hwOn);
+      main.hidden = which !== 'lesson'; hw.hidden = which !== 'hw'; pr.hidden = which !== 'pr';
+      tabLesson.setAttribute('aria-selected', which === 'lesson' ? 'true' : 'false');
+      tabHw.setAttribute('aria-selected', which === 'hw' ? 'true' : 'false');
+      tabPr.setAttribute('aria-selected', which === 'pr' ? 'true' : 'false');
+      navFor(which === 'hw' ? [L.homework] : which === 'pr' ? L.practice : L.steps, which === 'hw' ? 'hw' : which === 'pr' ? 'pr' : 'lesson');
       stats();
     }
     tabLesson.addEventListener('click', function () { showTab('lesson'); window.scrollTo(0, 0); });
     tabHw.addEventListener('click', function () { showTab('hw'); window.scrollTo(0, 0); });
+    tabPr.addEventListener('click', function () { showTab('pr'); window.scrollTo(0, 0); });
     if (!L.homework) tabHw.hidden = true;
+    if (!L.practice) tabPr.hidden = true;
     showTab('lesson');
 
     function go(id) {
       var el = document.getElementById(id); if (!el) return;
-      var inHw = hw.contains(el);
-      if (inHw && hw.hidden) showTab('hw'); else if (!inHw && main.hidden) showTab('lesson');
+      var want = hw.contains(el) ? 'hw' : pr.contains(el) ? 'pr' : 'lesson';
+      if ((want === 'hw' && hw.hidden) || (want === 'pr' && pr.hidden) || (want === 'lesson' && main.hidden)) showTab(want);
       el.scrollIntoView({ block: 'start' });
     }
     document.addEventListener('click', function (e) {
