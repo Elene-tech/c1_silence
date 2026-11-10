@@ -48,3 +48,8 @@ media: {
 ## Practice Lab (вкладка с дополнительной практикой)
 
 Файл `lessons/silence/data3.js` задаёт `window.LESSON.practice` — массив разделов (P1–P8): Use of English Part 1–4, Reading Part 7–8, лексика, аудирование (детали), грамматика. Движок показывает их на третьей вкладке. Чтобы добавить раздел, скопируйте любой блок в этом файле и поменяйте текст и ответы. Новые файлы `data3.js` подключаются в `lessons/silence/index.html` перед `engine.js`.
+
+
+## Урок 03: High Time Lab (`lessons/hightime/`)
+
+Урок на 120 минут по фотографиям: Warm-up (фото C), Vocabulary (3 набора слов, matching, select, word formation), Reading (статья с MCQ, matching, T/F/NG), Speaking по двум парам фото + разбор языка сравнения, Grammar (unreal time с цветовой кодировкой), обсуждение (chart), Writing. Вкладка Practice Lab (`data2.js`): Use of English 1–3 и идиомы. Вкладка Homework: open cloze, эссе, история по фото, словарь. Блок `photos` (две картинки рядом) добавлен в движок. Картинки лежат в `lessons/hightime/img/`.

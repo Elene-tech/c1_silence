@@ -16,5 +16,13 @@ window.C1_LESSONS = [
     title: 'Unreal Time Lab',
     blurb: 'Past tenses for unreal situations: if, imagine, suppose, as if, polite questions, it’s high time, would rather, wish and if only. Five real-life situations and colour-coded rules.',
     skills: ['Grammar', 'Use of English', 'Speaking', 'Writing']
+  },
+  {
+    id: 'hightime',
+    path: 'lessons/hightime/index.html',
+    eyebrow: 'Lesson 03 · 120 min',
+    title: 'High Time Lab',
+    blurb: 'Five photographs, three sets of words, a feature article about acting too late, exam-style photo speaking, and unreal-time grammar. Includes a Practice Lab.',
+    skills: ['Vocabulary', 'Reading', 'Speaking', 'Grammar', 'Writing']
   }
 ];

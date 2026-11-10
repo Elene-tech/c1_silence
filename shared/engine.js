@@ -191,6 +191,17 @@
     return fig;
   };
 
+  R.photos = function (b) {
+    var g = h('div', { class: 'photos' });
+    b.items.forEach(function (p) {
+      var f = h('figure', { class: 'photo' });
+      f.appendChild(h('img', { src: p.src, alt: p.alt || '', loading: 'lazy', decoding: 'async' }));
+      if (p.cap) { var fc = h('figcaption'); fc.textContent = p.cap; f.appendChild(fc); }
+      g.appendChild(f);
+    });
+    return g;
+  };
+
   R.tips = function (b) {
     return h('div', { class: 'tips' }, b.items.map(function (t) {
       return h('div', { class: 'tip' }, h('div', { class: 'tip-k' }, t.k), h('h4', null, t.h), h('p', { html: t.p }));

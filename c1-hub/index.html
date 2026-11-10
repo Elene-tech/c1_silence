@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>C1 Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/theme.css">
+</head>
+<body>
+<header class="band" style="padding-block:44px 38px">
+  <svg class="enso" viewBox="0 0 200 200" aria-hidden="true" style="width:380px;height:380px;right:-80px;top:-100px"><path d="M100 18c-45 0-82 36-82 82s37 82 82 82c46 0 80-34 82-76" fill="none" stroke="#E6C96D" stroke-width="13" stroke-linecap="round"/></svg>
+  <div class="wrap" style="position:relative">
+    <p class="eyebrow">Target English · Advanced</p>
+    <h1>C1 Lab</h1>
+    <p class="sub">Interactive lessons for C1 Advanced. Work through a lesson in order; your answers stay saved in this browser, so you can stop and continue later.</p>
+    <button class="btn sm" id="btn-theme" type="button" style="color:var(--on-band);border-color:var(--on-band-soft)">Light / dark</button>
+  </div>
+</header>
+<div class="wrap">
+  <main style="padding-block:6px 80px">
+    <div class="lgrid" id="lessons"></div>
+  </main>
+</div>
+<script src="shared/lessons.js"></script>
+<script>
+(function () {
+  var grid = document.getElementById('lessons');
+  window.C1_LESSONS.forEach(function (l) {
+    var sum = null;
+    try { sum = JSON.parse(localStorage.getItem('c1:' + l.id + ':summary') || 'null'); } catch (e) {}
+    var pct = sum && sum.total ? Math.round(100 * sum.answered / sum.total) : 0;
+    var a = document.createElement('a');
+    a.className = 'lcard'; a.href = l.path;
+    a.innerHTML = '<span class="k"></span><h2></h2><p></p><div class="tags"></div>' +
+      '<div class="prog" aria-hidden="true"><i></i></div><span class="go"></span>';
+    a.querySelector('.k').textContent = l.eyebrow;
+    a.querySelector('h2').textContent = l.title;
+    a.querySelector('p').textContent = l.blurb;
+    l.skills.forEach(function (s) { var t = document.createElement('span'); t.textContent = s; a.querySelector('.tags').append(t); });
+    a.querySelector('.prog i').style.width = pct + '%';
+    a.querySelector('.go').textContent = sum && sum.answered ? 'Continue · ' + pct + '% answered →' : 'Open lesson →';
+    grid.append(a);
+  });
+  document.getElementById('btn-theme').addEventListener('click', function () {
+    var cur = document.documentElement.getAttribute('data-theme');
+    var dark = cur ? cur === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+  });
+})();
+</script>
+</body>
+</html>
