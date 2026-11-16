@@ -24,5 +24,13 @@ window.C1_LESSONS = [
     title: 'High Time Lab',
     blurb: 'Five photographs, three sets of words, a feature article about acting too late, exam-style photo speaking, and unreal-time grammar. Includes a Practice Lab.',
     skills: ['Vocabulary', 'Reading', 'Speaking', 'Grammar', 'Writing']
+  },
+  {
+    id: 'dreamcity',
+    path: 'lessons/dreamcity/index.html',
+    eyebrow: 'Lesson 04 · 120 min',
+    title: 'Dream City Lab',
+    blurb: 'A TED talk about designing a dream city through play: listening tasks, words from the talk, Use of English, paraphrase practice, a modern reading text, photo speaking and a Practice Lab.',
+    skills: ['Listening', 'Vocabulary', 'Use of English', 'Paraphrase', 'Reading', 'Speaking', 'Writing']
   }
 ];

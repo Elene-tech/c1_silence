@@ -53,3 +53,11 @@ media: {
 ## Урок 03: High Time Lab (`lessons/hightime/`)
 
 Урок на 120 минут по фотографиям: Warm-up (фото C), Vocabulary (3 набора слов, matching, select, word formation), Reading (статья с MCQ, matching, T/F/NG), Speaking по двум парам фото + разбор языка сравнения, Grammar (unreal time с цветовой кодировкой), обсуждение (chart), Writing. Вкладка Practice Lab (`data2.js`): Use of English 1–3 и идиомы. Вкладка Homework: open cloze, эссе, история по фото, словарь. Блок `photos` (две картинки рядом) добавлен в движок. Картинки лежат в `lessons/hightime/img/`.
+
+## Урок 04: Dream City Lab (`lessons/dreamcity/`)
+
+Урок на 120 минут по TED-видео James Rojas «How would you design your dream city?». Видео встроено через `embed.ted.com` (в `data.js`, поле `media.ted.embed`), ниже кнопка-ссылка на страницу talk на ted.com. Задания: аудирование (gist, note completion, T/F/NG, детали, числа), слова из talk, Use of English Part 1–4, четыре задания на перефразирование, второй reading, speaking по фото, discussion chart, writing. Practice Lab (`data2.js`): Use of English 1–4, Paraphrase, лексика, второй reading, повтор видео. Данные разбиты на `data.js` (этапы 1–5), `data1b.js` (этапы 6–9) и `data2.js` (Practice Lab и домашка).
+
+**Фото.** В блоках `photos` без `src` показывается рамка «Photo to add» с описанием нужной картинки. Чтобы добавить фото, положите файл в `lessons/dreamcity/img/` и впишите `src: 'img/имя.jpg'` вместо `slot: '…'`. Уже есть `future.jpg` (город будущего).
+
+**Build your city.** В engine добавлен блок `citybuilder` (интерактивный, без оценок): палитра предметов, сетка, счётчики по категориям, сообщение-вердикт, таймер, сохранение картинки в PNG, состояние хранится в браузере. Параметры блока: `cols`, `rows`, `timer`, `cats` (ключи `green`, `social`, `move`, `car` задают цвета), `palette` (`e` эмодзи, `n` название, `c` категория), `verdict(counts, total)`. В уроке Dream City он используется дважды (воспоминание и город мечты). Фото из `img/`: `future.jpg`, `planner.jpg`, `city-data.jpg`, `city-model.jpg`. Осталось добавить 3 фото (playground, pedestrian street, car park), рамки «Photo to add» подскажут, где.
