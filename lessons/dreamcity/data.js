@@ -25,7 +25,7 @@
   goal: 'Look at the two photographs, speak about memory and cities, and guess what today’s talk is about.',
   blocks: [
     { t: 'photos', items: [
-      { slot: 'A children’s playground, a courtyard or a street where children are playing together outdoors.', cap: 'Photo A' },
+      { src: 'img/playground.jpg', alt: 'Four children play on a playground: two girls on a see-saw, two boys beside a spring rocker. Cars are parked on the street just behind them.', cap: 'Photo A' },
       { src: 'img/planner.jpg', alt: 'A woman works at a desk with a wooden model of a town in front of her and a 3D building design on a touchscreen.', cap: 'Photo B' }
     ] },
     { t: 'html', cls: 'ptask warm', html:

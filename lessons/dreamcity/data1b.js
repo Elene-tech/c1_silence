@@ -16,8 +16,8 @@
       '<p>Student B: when your partner has finished, answer:</p>' +
       '<span class="q">Which of these two places would you rather live near? Why?</span>' },
     { t: 'photos', items: [
-      { slot: 'A busy, pleasant pedestrian street or outdoor market: people walking, cafés, trees, no cars.', cap: 'Photo A' },
-      { slot: 'A large car park or a wide road full of cars, with hardly any people.', cap: 'Photo B' }
+      { src: 'img/street.jpg', alt: 'A wide pedestrian street with rows of benches, trees and a few people walking; cars and a bus are parked or waiting behind a low fence.', cap: 'Photo A' },
+      { src: 'img/carpark.jpg', alt: 'A huge car park seen from above: rows of parked cars, white lines and arrows, a grey sky and almost no people.', cap: 'Photo B' }
     ] },
     { t: 'timer', times: [{ s: 60, label: 'Student A speaks' }, { s: 30, label: 'Student B answers' }] },
     { t: 'html', cls: 'ptask wish', html:
@@ -32,7 +32,7 @@
     { t: 'timer', times: [{ s: 60, label: 'Student B speaks' }, { s: 30, label: 'Student A answers' }] },
     {
       t: 'tips', items: [
-        { k: 'Compare', h: 'Whereas · while · by contrast', p: '<b>Whereas</b> the people in A are on foot, those in B are all in vehicles. <b>By contrast</b>, …' },
+        { k: 'Compare', h: 'Whereas · while · by contrast', p: '<b>Whereas</b> Photo A is made for people on foot, B is made for vehicles. <b>By contrast</b>, …' },
         { k: 'Speculate', h: 'Might · could · must · can’t', p: 'They <b>might</b> be neighbours. She <b>must</b> be the organiser. He <b>can’t</b> be enjoying this.' },
         { k: 'React', h: 'Feelings and reasons', p: 'I’d imagine they feel… because… It would probably be… to…' },
         { k: 'Time', h: 'Do not describe for too long', p: 'Spend 15 seconds on what you see. Use the rest to answer the question.' }
@@ -42,8 +42,8 @@
       t: 'cloze', id: 'cmpsel', title: 'Compare and speculate: choose the best word', tag: 'S', mode: 'select',
       instr: 'Choose the word or phrase that completes each sentence about the photographs.',
       lines: [
-        '{1} the street in Photo A is full of people, the car park in Photo B feels empty.',
-        'The market looks lively. {2}, the car park seems lifeless.',
+        '{1} the street in Photo A is shaded and lined with benches, the car park in Photo B feels grey and empty.',
+        'The street looks inviting. {2}, the car park seems lifeless.',
         'The city in Photo C looks {3} alive than the model in Photo D, which has no people in it.',
         'The man in Photo C {4} be a planner: he is looking at the whole city.',
         '{5} different the two places are, both could be improved with more trees.',
@@ -68,6 +68,13 @@
       '<p><b>get … right, but … wrong</b> · <b>no matter who/where/how</b> · <b>stop being … and start being …</b> · <b>once … it becomes …</b> · <b>it’s high time</b></p>' +
       '<span class="q">Describe the street you would build if you could design it from nothing. Who would use it, and what would they feel there?</span>' },
     { t: 'timer', times: [{ s: 120, label: 'Mini-talk' }] },
+    { t: 'html', cls: 'ptask warm', html:
+      '<h4>Extra pair (if you finish early, or for homework speaking)</h4>' +
+      '<p>Compare photographs F and G, and say <b>what it might be like to spend an hour in each place</b>, and <b>who might prefer which</b>. Then answer: <b>Which place feels more like a city built for people? Why?</b></p>' },
+    { t: 'photos', items: [
+      { src: 'img/market.jpg', alt: 'A crowded street market: stalls with fruit under orange awnings, many people walking, a white mosque with domes in the background.', cap: 'Photo F' },
+      { src: 'img/motorway.jpg', alt: 'A multi-lane road seen from above, full of cars driving in both directions, with a pavement and low wall at the side.', cap: 'Photo G' }
+    ] },
     {
       t: 'reflect', id: 'spnotes', title: 'Self-check', tag: 'S',
       fields: [
@@ -84,6 +91,9 @@
   title: 'Build your dream city',
   goal: 'Do what the people in the talk do: build a memory, then a city. Pick an object, tap a square to place it, tap again to remove it.',
   blocks: [
+    { t: 'photos', items: [
+      { src: 'img/friends.jpg', alt: 'Two boys on a playground: one in a blue shirt holds the hand of the other, who sits on a spinning seat and smiles.', cap: 'A memory to start from: playing with a friend' }
+    ] },
     { t: 'html', cls: 'ptask warm', html:
       '<h4>Round 1 · Build a memory (3 minutes, no talking)</h4>' +
       '<p>In the talk, people build a favourite childhood memory from small objects. Do the same on the screen: choose objects, place them, and build <b>one real memory</b>.</p>' },
